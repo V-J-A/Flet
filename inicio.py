@@ -7,7 +7,7 @@ import flet as ft
 
 
 def menu_principal(page: ft.Page):
-    page.bgcolor = ft.Colors.WHITE
+    page.bgcolor = ft.Colors.BLACK
     page.title = "Sistema de Gestión - Academia de Formación"
 
     # --- FUNCIONES DE NAVEGACIÓN ---
@@ -50,7 +50,7 @@ def menu_principal(page: ft.Page):
                 on_click=lambda e: page.window.close()
             ),
         ],
-        content=ft.Text("Archivo", color=ft.Colors.BLACK, weight=ft.FontWeight.BOLD)
+        content=ft.Text("Archivo", color=ft.Colors.WHITE, weight=ft.FontWeight.BOLD)
     )
 
     # --- MENÚ HERRAMIENTAS ---
@@ -61,7 +61,7 @@ def menu_principal(page: ft.Page):
             ft.PopupMenuItem(content=ft.Text("Candidatos (Vacantes)"), icon=ft.Icons.PERSON_SEARCH,   on_click=abrir_candidatos),
             ft.PopupMenuItem(content=ft.Text("Comité Evaluador"),      icon=ft.Icons.ASSIGNMENT_IND,  on_click=abrir_comite),
         ],
-        content=ft.Text("Herramientas", color=ft.Colors.BLACK, weight=ft.FontWeight.BOLD)
+        content=ft.Text("Herramientas", color=ft.Colors.WHITE, weight=ft.FontWeight.BOLD)
     )
 
     # --- BOTONES DE ACCESO RÁPIDO ---
@@ -75,7 +75,7 @@ def menu_principal(page: ft.Page):
         page.add(
             ft.Row(controls=[archivo_menu, herramientas_menu], spacing=20),
             ft.Divider(),
-            ft.Text("Accesos Rápidos:", size=16, weight=ft.FontWeight.W_500, color=ft.Colors.BLACK),
+            ft.Text("Accesos Rápidos:", size=16, weight=ft.FontWeight.W_500, color=ft.Colors.WHITE),
             ft.Row(controls=[boton_profesores, boton_alumnos, boton_candidatos, boton_comite], spacing=15)
         )
 
