@@ -249,7 +249,7 @@ def panel_comite(page):
     def guardar(e):
         session = db()
         crear_comite(session, int(anio.value), int(presidente.value),
-                     int(secretario.value), int(vocal.value))
+                        int(secretario.value), int(vocal.value))
         session.close()
         anio.value = presidente.value = secretario.value = vocal.value = ''
         cargar_tabla()
