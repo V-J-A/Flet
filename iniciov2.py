@@ -73,7 +73,7 @@ def make_dropdown(label: str, options: list, value=None, width=None):
         text_style=ft.TextStyle(color=TEXT_MAIN),
         bgcolor=BG_DARK,
         border_radius=8,
-        options=[ft.DropdownOption(key=str(k), text=str(v)) for k, v in options],
+        options=[ft.dropdown.Option(key=str(k), text=str(v)) for k, v in options],
     )
 
 
@@ -85,7 +85,7 @@ def make_btn(text: str, on_click=None, color=ACCENT, icon=None):
         on_click=on_click,
         style=ft.ButtonStyle(
             shape=ft.RoundedRectangleBorder(radius=8),
-            padding=ft.Padding.symmetric(horizontal=20, vertical=12),
+            padding=ft.padding.symmetric(horizontal=20, vertical=12),
         ),
     )
 
@@ -147,7 +147,7 @@ def panel_profesores(page):
             make_header_cell("Tipo"),
             make_header_cell("Acciones"),
         ],
-        border=ft.Border.all(1, BORDER),
+        border=ft.border.all(1, BORDER),
         border_radius=10,
         heading_row_color=ft.Colors.with_opacity(0.08, ACCENT),
         column_spacing=24,
@@ -198,8 +198,6 @@ def panel_profesores(page):
         snack(page, "Profesor guardado")
         _refresh()
 
-    _refresh()
-
     page.add(
         ft.Container(
             content=ft.Column([
@@ -219,9 +217,9 @@ def panel_profesores(page):
                                                icon=ft.Icons.SAVE)]),
                     ], spacing=12),
                     bgcolor=BG_CARD,
-                    border=ft.Border.all(1, BORDER),
+                    border=ft.border.all(1, BORDER),
                     border_radius=12,
-                    padding=ft.Padding.all(20),
+                    padding=ft.padding.all(20),
                 ),
                 ft.Container(height=16),
                 # Tabla
@@ -230,10 +228,11 @@ def panel_profesores(page):
                 ),
             ], spacing=16, expand=True),
             expand=True,
-            padding=ft.Padding.all(28),
+            padding=ft.padding.all(28),
             bgcolor=BG_DARK,
         )
     )
+    _refresh()
 
 
 # ============================================================
@@ -258,7 +257,7 @@ def panel_alumnos(page):
             make_header_cell("Grupo"),
             make_header_cell("Acciones"),
         ],
-        border=ft.Border.all(1, BORDER),
+        border=ft.border.all(1, BORDER),
         border_radius=10,
         heading_row_color=ft.Colors.with_opacity(0.08, ACCENT),
         column_spacing=24,
@@ -289,10 +288,10 @@ def panel_alumnos(page):
         session = db()
         grupos = listar_grupos(session)
         session.close()
-        grupo_drop.options = [ft.DropdownOption(key="", text="Sin grupo")]
+        grupo_drop.options = [ft.dropdown.Option(key="", text="Sin grupo")]
         for g in grupos:
             label = f"{g.codigo} (Curso {g.id_curso})"
-            grupo_drop.options.append(ft.DropdownOption(key=str(g.id), text=label))
+            grupo_drop.options.append(ft.dropdown.Option(key=str(g.id), text=label))
         page.update()
 
     def _refresh():
@@ -322,7 +321,6 @@ def panel_alumnos(page):
         _refresh()
 
     recargar_grupos()
-    _refresh()
 
     page.add(
         ft.Container(
@@ -341,9 +339,9 @@ def panel_alumnos(page):
                                          icon=ft.Icons.SAVE)]),
                     ], spacing=12),
                     bgcolor=BG_CARD,
-                    border=ft.Border.all(1, BORDER),
+                    border=ft.border.all(1, BORDER),
                     border_radius=12,
-                    padding=ft.Padding.all(20),
+                    padding=ft.padding.all(20),
                 ),
                 ft.Container(height=16),
                 ft.Container(
@@ -351,10 +349,11 @@ def panel_alumnos(page):
                 ),
             ], spacing=16, expand=True),
             expand=True,
-            padding=ft.Padding.all(28),
+            padding=ft.padding.all(28),
             bgcolor=BG_DARK,
         )
     )
+    _refresh()
 
 
 # ============================================================
@@ -382,7 +381,7 @@ def panel_candidatos(page):
             make_header_cell("Tipo"),
             make_header_cell("Acciones"),
         ],
-        border=ft.Border.all(1, BORDER),
+        border=ft.border.all(1, BORDER),
         border_radius=10,
         heading_row_color=ft.Colors.with_opacity(0.08, ACCENT),
         column_spacing=24,
@@ -430,8 +429,6 @@ def panel_candidatos(page):
         snack(page, "Candidato guardado")
         _refresh()
 
-    _refresh()
-
     page.add(
         ft.Container(
             content=ft.Column([
@@ -450,9 +447,9 @@ def panel_candidatos(page):
                                          icon=ft.Icons.SAVE)]),
                     ], spacing=12),
                     bgcolor=BG_CARD,
-                    border=ft.Border.all(1, BORDER),
+                    border=ft.border.all(1, BORDER),
                     border_radius=12,
-                    padding=ft.Padding.all(20),
+                    padding=ft.padding.all(20),
                 ),
                 ft.Container(height=16),
                 ft.Container(
@@ -460,10 +457,11 @@ def panel_candidatos(page):
                 ),
             ], spacing=16, expand=True),
             expand=True,
-            padding=ft.Padding.all(28),
+            padding=ft.padding.all(28),
             bgcolor=BG_DARK,
         )
     )
+    _refresh()
 
 
 # ============================================================
@@ -488,7 +486,7 @@ def panel_comite(page):
             make_header_cell("Vocal"),
             make_header_cell("Acciones"),
         ],
-        border=ft.Border.all(1, BORDER),
+        border=ft.border.all(1, BORDER),
         border_radius=10,
         heading_row_color=ft.Colors.with_opacity(0.08, ACCENT),
         column_spacing=24,
@@ -537,8 +535,6 @@ def panel_comite(page):
         snack(page, "Comité creado")
         _refresh()
 
-    _refresh()
-
     page.add(
         ft.Container(
             content=ft.Column([
@@ -556,9 +552,9 @@ def panel_comite(page):
                                          icon=ft.Icons.GROUPS)]),
                     ], spacing=12),
                     bgcolor=BG_CARD,
-                    border=ft.Border.all(1, BORDER),
+                    border=ft.border.all(1, BORDER),
                     border_radius=12,
-                    padding=ft.Padding.all(20),
+                    padding=ft.padding.all(20),
                 ),
                 ft.Container(height=16),
                 ft.Container(
@@ -566,10 +562,11 @@ def panel_comite(page):
                 ),
             ], spacing=16, expand=True),
             expand=True,
-            padding=ft.Padding.all(28),
+            padding=ft.padding.all(28),
             bgcolor=BG_DARK,
         )
     )
+    _refresh()
 
 
 # ============================================================
@@ -615,8 +612,8 @@ def menu_principal(page):
                         ),
                     ], spacing=20),
                     bgcolor=BG_SIDEBAR,
-                    padding=ft.Padding.symmetric(horizontal=20, vertical=10),
-                    border=ft.Border.only(bottom=ft.BorderSide(1, BORDER)),
+                    padding=ft.padding.symmetric(horizontal=20, vertical=10),
+                    border=ft.border.only(bottom=ft.border.BorderSide(1, BORDER)),
                 ),
                 # Contenido principal
                 ft.Container(
@@ -639,7 +636,7 @@ def menu_principal(page):
                         ], spacing=16, wrap=True),
                     ], spacing=16),
                     expand=True,
-                    padding=ft.Padding.all(32),
+                    padding=ft.padding.all(32),
                 ),
             ], spacing=0, expand=True),
             expand=True,
@@ -656,9 +653,9 @@ def _quick_card(label, icon, on_click):
             ft.Text(label, color=TEXT_MAIN, size=14, weight=ft.FontWeight.W_600),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=8),
         bgcolor=BG_CARD,
-        border=ft.Border.all(1, BORDER),
+        border=ft.border.all(1, BORDER),
         border_radius=14,
-        padding=ft.Padding.all(24),
+        padding=ft.padding.all(24),
         width=140, height=110,
         on_click=on_click,
         ink=True,
