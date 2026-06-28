@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from coneccion import SessionLocal, Comite, Profesor
+from conexion import SessionLocal, Comite, Profesor
 
 
 def listar_comites(db: Session):

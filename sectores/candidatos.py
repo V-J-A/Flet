@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from coneccion import SessionLocal, Candidato, CandidatoMateria, Llamada, Entrevista, Asignatura, Comite
+from conexion import SessionLocal, Candidato, CandidatoMateria, Llamada, Entrevista, Asignatura, Comite
 
 
 def listar_candidatos(db: Session):

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from coneccion import SessionLocal, Alumno, Grupo, Curso, Especialidad
-from coneccion import FichaIndividual, RegistroAsistencia, HojaActividad, Profesor
+from conexion import SessionLocal, Alumno, Grupo, Curso, Especialidad
+from conexion import FichaIndividual, RegistroAsistencia, HojaActividad, Profesor
 
 
 def listar_alumnos(db: Session):

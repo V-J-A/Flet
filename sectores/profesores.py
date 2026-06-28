@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from coneccion import SessionLocal, Profesor, ProfesorEspecialista, Grupo, Asignatura
+from conexion import SessionLocal, Profesor, ProfesorEspecialista, Grupo, Asignatura
 
 
 def listar_profesores(db: Session):
